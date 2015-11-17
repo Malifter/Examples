@@ -21,14 +21,14 @@ public class LargestProductInSeries {
 				+ "25607176060588611646710940507754100225698315520005593572"
 				+ "972571636269561882670428252483600823257530420752963450";
 		int n = 13;
-		System.out.println("number = " + number);
+		System.out.println("series = " + number);
 		System.out.println("The " + n + " adjacent digits in the " + number.length()
 			+ "-digit number that have the greatest poduct are: " + findLargestProductInSeries(n, number));
 	}
 	
 	public static Product findLargestProductInSeries(int n, String number) {
 		Product maxProduct = new Product();
-		for(int i = 0; i <= number.length() - n; i++) {
+		for(int i = 0; i <= number.length() - n + 1; i++) {
 			long product = 1; // the end value overflowed the original integer used
 			int [] values = new int [n];
 			for(int j = 0; j < n; j++) {
