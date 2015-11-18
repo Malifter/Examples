@@ -8,7 +8,8 @@ public class GoogleDemo1 {
 		{
 			Random random = new Random();
 			for(int i = 0; i < B.length; i++) {
-				int r = (random.nextInt(Integer.MAX_VALUE) - Integer.MAX_VALUE/2) + (random.nextInt(Integer.MAX_VALUE) - Integer.MAX_VALUE/2);
+				int r = (random.nextInt(Integer.MAX_VALUE) - Integer.MAX_VALUE/2) +
+						(random.nextInt(Integer.MAX_VALUE) - Integer.MAX_VALUE/2);
 				B[i] = r;
 			}
 		}

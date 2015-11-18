@@ -28,9 +28,7 @@ public class HasSubstring {
 					break;
 				}
 			}
-			if(matching) {
-				return true;
-			}
+			if(matching) return true;
 		}
 		return false;
 	}

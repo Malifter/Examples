@@ -3,7 +3,7 @@ import java.math.BigInteger;
 public class LatticePaths {
 
 	public static void main(String [] args) {
-		int size = 200; // grid size
+		int size = 20; // grid size
 		System.out.println("The number of Lattice paths for a " + size + "x" + size + " grid is: " + findLatticePathsSeries(size));
 	}
 	
@@ -19,7 +19,7 @@ public class LatticePaths {
 		return v;
 	}
 	
-	// BFS used to find initial series for grids sized 1 - 10 to determine series equation
+	// BFS used to find initial series for grids sized 1 - 10 to determine above series equation
 	// Note: Brute-forcing is a very slow implementation -- O(2N choose N)
 	public static long findLatticePathsRecursive(int n, int r, int c) {
 		if(r == n && c == n) return 1; // reached the end point
@@ -56,8 +56,8 @@ public class LatticePaths {
 		return v;
 	}
 	
-	// Note: This is the best implementation. It requires the least constant mathematical steps
-	// and is tied for smallest memory imprint and O(n) runtime.
+	// Note: This is the best implementation. It requires the least constant-time mathematical steps
+	// and is tied for smallest memory imprint with O(n) runtime.
 	public static long findLatticePathsCombinatronic(int n) { // 2n choose n
 		long v = 1;
 		for(double i = 1; i <= n; i++) {

@@ -21,7 +21,7 @@ public class NthPrime {
 	public static int findNthPrime(int n) {
 		if(n <= 1) return n < 1 ? -1 : 2;
 		int primes = 1; // 2 is the first prime so count it
-		for(int i = 3; true; i+=2) {
+		for(int i = 3; true; i+=2) { // 2 is the only even prime so skip even numbers
 			if(isPrime(i)) if(++primes == n) return i;
 		}
 	}

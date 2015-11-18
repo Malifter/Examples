@@ -55,7 +55,7 @@ public class LargestProductInGrid {
 			}
 		}
 		
-		// diagonally - backs-lash
+		// diagonally - back-slash
 		for(int r = 0; r < grid.length - n + 1; r++) {
 			for(int c = 0; c < grid[r].length - n + 1; c++) {
 				long product = 1;

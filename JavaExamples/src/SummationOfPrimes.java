@@ -22,7 +22,7 @@ public class SummationOfPrimes {
 		end = System.currentTimeMillis();
 		System.out.println("Sieve of Sundaram took " + (end - start) + " milliseconds to find the sum of primes below " + threshold + ": sum = " + sum);
 		
-		// sieve of eratosthenes
+		// sieve of atkin
 		sum = 0;
 		start = System.currentTimeMillis();
 		for(int prime: sieveOfAtkin(threshold)) sum += prime;
@@ -70,7 +70,10 @@ public class SummationOfPrimes {
 		int root = (int) Math.ceil(Math.sqrt(threshold - 1));
 		for(int x = 1; x < root; x++) {
 			for(int y = 1; y < root; y++) {
-				int n = 4*x*x + y*y; // 4x^2 + y^2
+				// precompute x*x and y*y at the cost of O(2) memory
+				int x2 = x*x;
+				int y2 = y*y;
+				int n = 4*x2 + y2; // 4x^2 + y^2
 				if(n <= threshold) {
 					switch(n % 60) {
 						case 1: case 13: case 17: case 29: case 37: case 41: case 49: case 53:
@@ -79,7 +82,7 @@ public class SummationOfPrimes {
 						default:break;
 					}
 				}
-				n = 3*x*x + y*y; // 3x^2 + y^2
+				n = n - x2; // 3x^2 + y^2
 				if(n <= threshold) {
 					switch(n % 60) {
 						case 7: case 19: case 31: case 43:
@@ -89,7 +92,7 @@ public class SummationOfPrimes {
 					}
 				}
 				if(x > y) {
-					n = 3*x*x - y*y; // 4x^2 + y^2
+					n = (n - y2) - y2; // 3x^2 - y^2
 					if(n <= threshold) {
 						switch(n % 60) {
 							case 11: case 23: case 47: case 59:
