@@ -1,12 +1,20 @@
-import java.util.Arrays;
+import java.util.Random;
 
 public class GoogleDemo1 {
 
 	public static void main(String [] args) {
 		int [] A = {-1,3,-4,5,1,-6,2,1};
+		int [] B = new int [100000];
+		{
+			Random random = new Random();
+			for(int i = 0; i < B.length; i++) {
+				int r = (random.nextInt(Integer.MAX_VALUE) - Integer.MAX_VALUE/2) + (random.nextInt(Integer.MAX_VALUE) - Integer.MAX_VALUE/2);
+				B[i] = r;
+			}
+		}
 		System.out.println(solution(A));
 	}
-	
+
 	public static int solution(int[] A) {
 		long totalSum = 0;
 		long [] leftSums = new long [A.length];

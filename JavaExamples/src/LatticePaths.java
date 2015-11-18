@@ -1,23 +1,26 @@
+import java.math.BigInteger;
 
 public class LatticePaths {
 
 	public static void main(String [] args) {
-		int size = 20; // grid size
+		int size = 200; // grid size
 		System.out.println("The number of Lattice paths for a " + size + "x" + size + " grid is: " + findLatticePathsSeries(size));
 	}
 	
 	// My Solutions
-	public static long findLatticePathsSeries(int n) {
-		long v = 1;
-		for(double i = 1; i <= n; i++) {
+	public static BigInteger findLatticePathsSeries(int n) {
+		BigInteger v = BigInteger.valueOf(1);
+		for(long i = 1; i <= n; i++) {
 			//v = (long) (v * (3 + ((i-2) / i)));
-			v = (long) ((v * ((4*i) - 2)) / i);
+			//v = (long) ((v * ((4*i) - 2)) / i); // reordering of above
+			v = v.multiply(BigInteger.valueOf((4*i) - 2));
+			v = v.divide(BigInteger.valueOf(i));
 		}
 		return v;
 	}
 	
-	// Used to find initial series for grids sized 1 - 10 to determine series equation
-	// Note: Very slow implementation.
+	// BFS used to find initial series for grids sized 1 - 10 to determine series equation
+	// Note: Brute-forcing is a very slow implementation -- O(2N choose N)
 	public static long findLatticePathsRecursive(int n, int r, int c) {
 		if(r == n && c == n) return 1; // reached the end point
 		long sum = 0;
