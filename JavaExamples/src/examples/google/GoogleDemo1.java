@@ -1,4 +1,4 @@
-package examples;
+package examples.google;
 import java.util.Random;
 
 public class GoogleDemo1 {

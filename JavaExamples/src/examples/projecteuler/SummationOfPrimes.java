@@ -1,4 +1,4 @@
-package examples;
+package examples.projecteuler;
 import java.util.ArrayList;
 
 public class SummationOfPrimes {

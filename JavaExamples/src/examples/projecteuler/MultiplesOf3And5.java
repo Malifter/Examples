@@ -1,4 +1,4 @@
-package examples;
+package examples.projecteuler;
 import java.util.Arrays;
 
 public class MultiplesOf3And5 {
