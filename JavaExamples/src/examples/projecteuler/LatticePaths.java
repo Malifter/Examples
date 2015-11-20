@@ -9,13 +9,10 @@ public class LatticePaths {
 	}
 	
 	// My Solutions
-	public static BigInteger findLatticePathsSeries(int n) {
-		BigInteger v = BigInteger.valueOf(1);
+	public static long findLatticePathsSeries(int n) {
+		long v = 1;
 		for(long i = 1; i <= n; i++) {
-			//v = (long) (v * (3 + ((i-2) / i)));
-			//v = (long) ((v * ((4*i) - 2)) / i); // reordering of above
-			v = v.multiply(BigInteger.valueOf((4*i) - 2));
-			v = v.divide(BigInteger.valueOf(i));
+			v = (long) ((v * ((4*i) - 2)) / i);
 		}
 		return v;
 	}
