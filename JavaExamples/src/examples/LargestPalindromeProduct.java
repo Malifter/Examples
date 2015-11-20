@@ -1,3 +1,4 @@
+package examples;
 
 public class LargestPalindromeProduct {
 	static final int POWER_10 = 10;

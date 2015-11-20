@@ -1,3 +1,4 @@
+package examples;
 import java.util.Arrays;
 
 public class MultiplesOf3And5 {
