@@ -16,7 +16,39 @@ public class GoogleSample2 {
 				+ "  dir4\n"
 				+ "dir2\n"
 				+ " file2.gif\n";
-		System.out.println(solution(S));
+		System.out.println(solution2(S));
+	}
+	
+	public static int solution2(String S) {
+		int max = 0;
+		String [] parts = S.split("\n");
+		max = solution2Recursive(parts, -1, 0, "");
+		return max;
+	}
+	
+	public static int solution2Recursive(String [] parts, int lastLevel, int i, String path) {
+		if(i == parts.length) return 0;
+		String part = parts[i];
+		int level = part.lastIndexOf(' ') + 1;
+		part = part.replaceAll("\\s+", "");
+		int max = 0;
+		if(level > lastLevel) {
+			path += "/" + part;
+		} else if(level < lastLevel) {
+			return 0;
+		} else if(level == lastLevel) {
+			path = path.substring(0, path.lastIndexOf('/'));
+			path += "/" + part;
+		}
+		max = Math.max(max, solution2Recursive(parts, level, i+1, path));
+		if(path.contains(".jpeg") ||
+				path.contains(".png") ||
+				path.contains(".gif") &&
+				level >= lastLevel) {
+			System.out.println(path);
+			return Math.max(max, path.length());
+		}
+		return max;
 	}
 	
 	public static int solution(String S) {;
