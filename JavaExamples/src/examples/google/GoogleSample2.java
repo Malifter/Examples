@@ -15,10 +15,11 @@ public class GoogleSample2 {
 				+ "    longpicture.png\n"
 				+ "  dir4\n"
 				+ "dir2\n"
-				+ " test.gif\n";
+				+ " longpicturelongpicture.gif\n";
 		System.out.println(solution3(S));
 	}
 	
+	// O(n) if we solve it backwards because now we don't have to backtrack at all
 	public static int solution3(String S) {
 		int max = 0;
 		String [] parts = S.split("\n");
