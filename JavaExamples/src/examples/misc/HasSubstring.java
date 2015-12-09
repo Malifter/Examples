@@ -1,4 +1,4 @@
-package examples.projecteuler;
+package examples.misc;
 
 public class HasSubstring {
 	
