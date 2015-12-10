@@ -10,7 +10,7 @@ import java.util.Arrays;
 // array left.
 // Stable (preserves order of duplicates)
 // O(n) extra space
-// Omega(n*lg(n)) time/comparisons
+// Theta(n*lg(n)) time/comparisons
 // Not Adaptive: O(n*lg(n)) when nearly sorted
 public class TT_MergeSort extends TT_SortMain {
 	private static final long serialVersionUID = 2265882188689294893L;
