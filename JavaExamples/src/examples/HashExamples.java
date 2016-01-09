@@ -74,6 +74,6 @@ public class HashExamples {
 		System.out.println(Arrays.toString(htsc.keySet().toArray()));
 		System.out.println(htsc.toFullString());
 		
-		// TODO: Use the names file to do a massive insert and remove in random order.
+		// TODO: Use the p022_names file to do a massive insert and remove in random order.
 	}
 }
