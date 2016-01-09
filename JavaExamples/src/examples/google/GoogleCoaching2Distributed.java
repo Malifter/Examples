@@ -11,16 +11,21 @@ import java.io.OutputStreamWriter;
 import java.util.Random;
 import java.util.concurrent.locks.ReentrantLock;
 
+import utilities.MyTimer;
+
 // sort large array of 1's and 0's (too big for memory)
 public class GoogleCoaching2Distributed {
 	final static int NUMBER_OF_COMPUTERS = 4; // number of processors/threads
-	final static int ARTIFICIAL_MEMORY_LIMIT = 100; // Pretend we can only fit 100 objects in memory per computer (processor)
+	final static int ARTIFICIAL_MEMORY_LIMIT = 10000; // Pretend we can only fit 10000 objects in memory per computer (processor)
 	public static void main(String [] args) throws IOException {
 		String inputName = "unsortedHugeFile0s1s.txt";
 		String outputName = "sortedHugeFiles0s1s.txt";
 		//generateRandomBinaryFile(inputName);
 		System.out.print("Sorting huge file...");
+		MyTimer timer = new MyTimer();
+		timer.start();
 		new SolutionDistributed().distribute(inputName, outputName);
+		System.out.println("Runtime: " + timer.time() + " miliseconds");
 	}
 	
 	public static class SolutionDistributed implements SolutionObserver {
@@ -67,7 +72,7 @@ public class GoogleCoaching2Distributed {
 				long zerosCount = totalSize - onesCount;
 				System.out.print("total: " + totalSize + " ones: " + onesCount + " zeros: " + zerosCount);
 				StringBuilder out = new StringBuilder();
-				int write = 0;
+				long write = 0;
 				while(write < totalSize) {
 					if(out.length() == ARTIFICIAL_MEMORY_LIMIT) {
 						bw.append(out.toString());

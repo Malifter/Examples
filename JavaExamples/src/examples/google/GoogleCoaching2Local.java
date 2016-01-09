@@ -10,20 +10,25 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Random;
 
+import utilities.MyTimer;
+
 // sort large array of 1's and 0's (too big for memory)
 public class GoogleCoaching2Local {
-	final static int ARTIFICIAL_MEMORY_LIMIT = 100; // Pretend we can only fit 100 objects in memory per computer (processor)
+	final static int ARTIFICIAL_MEMORY_LIMIT = 10000; // Pretend we can only fit 10000 objects in memory
 	public static void main(String [] args) throws IOException {
 		String inputName = "unsortedHugeFile0s1s.txt";
 		String outputName = "sortedHugeFiles0s1s.txt";
 		//generateRandomBinaryFile(inputName);
 		System.out.print("Sorting huge file...");
+		MyTimer timer = new MyTimer();
+		timer.start();
 		solutionLocal(inputName, outputName);
+		System.out.println("Runtime: " + timer.time() + " miliseconds");
 	}
 	
 	public static void solutionLocal(String inputName, String outputName) throws IOException {
-		int totalSize = 0;
-		int onesCount = 0;
+		long totalSize = 0;
+		long onesCount = 0;
 		
 		// Open file.
 		File inFile = new File(inputName);
@@ -56,9 +61,9 @@ public class GoogleCoaching2Local {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));
 		
 		try {
-			int zerosCount = totalSize - onesCount;
+			long zerosCount = totalSize - onesCount;
 			System.out.print("total: " + totalSize + " ones: " + onesCount + " zeros: " + zerosCount);
-			int write = 0;
+			long write = 0;
 			while(write < totalSize) {
 				if(out.length() == ARTIFICIAL_MEMORY_LIMIT) {
 					bw.append(out.toString());
@@ -82,7 +87,7 @@ public class GoogleCoaching2Local {
 	}
 	
 	public static void generateRandomBinaryFile(String fileName) throws IOException {
-		final int DATA_SIZE = 75 * (ARTIFICIAL_MEMORY_LIMIT+1);
+		final int DATA_SIZE = 7500 * (ARTIFICIAL_MEMORY_LIMIT+1);
 		File file = new File(fileName);
 		if(!file.exists()) file.createNewFile();
 		
